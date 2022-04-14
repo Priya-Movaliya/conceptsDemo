@@ -1,0 +1,61 @@
+<form [formGroup]="formDetail" (ngSubmit)="onSubmit()">
+
+    <div formArrayName="party">
+        <ng-container *ngFor="let skill of party.controls; let i=index">
+            <div [formGroupName]="i">
+
+                <mat-form-field appearance="outline">
+                    <input matInput formControlName="name" placeholder="Enter Name">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <input #amount (keyup)="amountValue(amount.value,i)" type="number" matInput formControlName="amount"
+                        placeholder="Enter Amount">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <input type="number" #discount (keyup)="discountAmount(discount.value,i)" matInput formControlName="discount"
+                        placeholder="Enter Discount">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <input type="number" matInput formControlName="total" placeholder="Total">
+                </mat-form-field>
+
+                <mat-icon class="delete-btn" (click)="removeData(i)"> delete_forever</mat-icon>
+            </div>
+        </ng-container>
+    </div>
+
+
+    <div class="total">
+        <mat-form-field appearance="outline">
+            <input type="number" matInput formControlName="totalAmount" placeholder="Total Amount">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <input type="number" #totalDiscount (keyup)="totalDiscountValue(totalDiscount.value)" matInput
+                formControlName="totalDiscount" placeholder="Total Discount">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <input type="number" matInput formControlName="totalValue" placeholder="Total Value">
+        </mat-form-field>
+
+        <button mat-mini-fab (click)="addData()">
+            <mat-icon class="add-course-btn">add</mat-icon>
+        </button>
+
+    </div>
+
+    <div>
+
+        <button class="submit" mat-raised-button color="primary" type="submit">Submit</button>
+    </div>
+
+
+</form>
+
+
+
+<!-- {{this.formDetail.value | json}} -->

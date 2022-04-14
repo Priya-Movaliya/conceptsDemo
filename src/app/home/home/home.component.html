@@ -1,0 +1,18 @@
+
+<p #title>This is Form Data</p>
+
+<form [formGroup]="detail" (ngSubmit)="submitLoginData()">
+    <ul><label>Name</label>
+        <input type="name" formControlName="name">
+    </ul>
+    <ul>
+        <label>Password</label>
+        <input type="password" formControlName="password">
+    </ul>
+    <ul>
+        <button>login</button>
+    </ul>
+
+</form>
+<button (click)="onClick()">click</button>
+<app-viewhome></app-viewhome>
